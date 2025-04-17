@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import GradientText from "@/components/GradientText";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin } from "lucide-react";
@@ -12,7 +11,7 @@ export default function Events() {
   return (
     <section id="events" className="py-20 bg-background overflow-hidden">
       <div className="container mx-auto px-6">
-        <ScrollReveal 
+        <ScrollReveal
           className="text-center mb-16"
           direction="up"
           effect="spring"
@@ -22,13 +21,14 @@ export default function Events() {
             Our <GradientText>Events</GradientText>
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Explore our engaging events designed to fuel your passion for technology
+            Explore our engaging events designed to fuel your passion for
+            technology
           </p>
         </ScrollReveal>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {/* Featured Event */}
-          <ScrollReveal 
+          <ScrollReveal
             className="col-span-1 md:col-span-2"
             direction="up"
             effect="slide"
@@ -37,50 +37,35 @@ export default function Events() {
           >
             <div className="relative overflow-hidden rounded-xl h-96 transform transition-all duration-500 hover:shadow-xl hover:shadow-accent/20 hover:-translate-y-1">
               <div className="absolute inset-0 overflow-hidden">
-                <ScrollReveal
-                  effect="fade"
-                  duration={1.5}
-                >
-                  <img 
-                    src={featuredEvent.image} 
-                    alt={featuredEvent.title} 
-                    className="absolute inset-0 w-full h-full object-cover transform transition-all duration-2000 hover:scale-110" 
+                <ScrollReveal effect="fade" duration={1.5}>
+                  <img
+                    src={featuredEvent.image}
+                    alt={featuredEvent.title}
+                    className="absolute inset-0 w-full h-full object-cover transform transition-all duration-2000 hover:scale-110"
                   />
                 </ScrollReveal>
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
               <div className="absolute bottom-0 left-0 p-8">
-                <ScrollReveal
-                  direction="left"
-                  effect="slide"
-                  delay={0.3}
-                >
+                <ScrollReveal direction="left" effect="slide" delay={0.3}>
                   <span className="inline-block px-4 py-1 bg-accent text-white text-sm font-medium rounded-full mb-4">
                     UPCOMING EVENT
                   </span>
                 </ScrollReveal>
-                
-                <ScrollReveal
-                  direction="up"
-                  effect="slide"
-                  delay={0.4}
-                >
-                  <h3 className="font-poppins font-bold text-2xl md:text-3xl mb-2">{featuredEvent.title}</h3>
+
+                <ScrollReveal direction="up" effect="slide" delay={0.4}>
+                  <h3 className="font-poppins font-bold text-2xl md:text-3xl mb-2">
+                    {featuredEvent.title}
+                  </h3>
                 </ScrollReveal>
-                
-                <ScrollReveal
-                  direction="up"
-                  effect="slide"
-                  delay={0.5}
-                >
-                  <p className="text-gray-300 mb-4">{featuredEvent.description}</p>
+
+                <ScrollReveal direction="up" effect="slide" delay={0.5}>
+                  <p className="text-gray-300 mb-4">
+                    {featuredEvent.description}
+                  </p>
                 </ScrollReveal>
-                
-                <ScrollReveal
-                  direction="up"
-                  effect="slide"
-                  delay={0.6}
-                >
+
+                <ScrollReveal direction="up" effect="slide" delay={0.6}>
                   <div className="flex items-center text-sm text-gray-300">
                     <Calendar className="h-5 w-5 mr-2 text-accent" />
                     <span>{featuredEvent.date}</span>
@@ -91,10 +76,10 @@ export default function Events() {
               </div>
             </div>
           </ScrollReveal>
-          
+
           {/* Regular Events */}
-          {events.map((event, index) => (
-            <ScrollReveal 
+          {events.slice(0,2).map((event, index) => (
+            <ScrollReveal
               key={index}
               direction="up"
               effect={index % 2 === 0 ? "spring" : "bounce"}
@@ -103,9 +88,9 @@ export default function Events() {
             >
               <Card className="bg-card overflow-hidden h-full transform transition-all duration-500 hover:shadow-xl hover:shadow-accent/20 hover:-translate-y-2">
                 <div className="h-48 overflow-hidden">
-                  <img 
-                    src={event.image} 
-                    alt={event.title} 
+                  <img
+                    src={event.image}
+                    alt={event.title}
                     className="w-full h-full object-cover transform transition-all duration-1000 hover:scale-110"
                   />
                 </div>
@@ -119,23 +104,27 @@ export default function Events() {
                       {event.tag}
                     </span>
                   </ScrollReveal>
-                  
+
                   <ScrollReveal
                     direction="up"
                     effect="slide"
                     delay={0.2 + index * 0.05}
                   >
-                    <h3 className="font-poppins font-bold text-xl mb-2">{event.title}</h3>
+                    <h3 className="font-poppins font-bold text-xl mb-2">
+                      {event.title}
+                    </h3>
                   </ScrollReveal>
-                  
+
                   <ScrollReveal
                     direction="up"
                     effect="slide"
                     delay={0.3 + index * 0.05}
                   >
-                    <p className="text-gray-300 text-sm mb-4">{event.description}</p>
+                    <p className="text-gray-300 text-sm mb-4">
+                      {event.description}
+                    </p>
                   </ScrollReveal>
-                  
+
                   <ScrollReveal
                     direction="up"
                     effect="slide"
@@ -151,15 +140,18 @@ export default function Events() {
             </ScrollReveal>
           ))}
         </div>
-        
-        <ScrollReveal 
+
+        <ScrollReveal
           className="text-center"
           direction="up"
           effect="bounce"
           delay={0.4}
           distance={30}
         >
-          <Button className="blue-gradient px-8 py-6 rounded-lg font-poppins font-medium shadow-lg hover:shadow-accent/50 transition-all transform hover:-translate-y-2 hover:scale-105">
+          <Button
+            className="blue-gradient px-8 py-6 rounded-lg font-poppins font-medium shadow-lg hover:shadow-accent/50 transition-all transform hover:-translate-y-2 hover:scale-105"
+            onClick={() => (window.location.href = "/events")}
+          >
             View All Events
           </Button>
         </ScrollReveal>

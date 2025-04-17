@@ -9,32 +9,40 @@ export const data = {
   
   events: [
     {
-      title: "Modern Web Development with React",
-      description: "Learn the fundamentals of React and build your first application",
-      date: "April 8, 2025",
-      tag: "WORKSHOP",
-      image: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "Introduction to Artificial Intelligence",
-      description: "Explore the basics of AI with industry experts",
-      date: "April 22, 2025",
-      tag: "LECTURE SERIES",
-      image: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "Code Sprint: Algorithmic Challenge",
-      description: "Test your problem-solving skills in this timed coding competition",
-      date: "May 3, 2025",
+      title: "Crack The Code",
+      description: "Experience real placement challenges with actual company questions. Includes online assessment, technical interviews, Q&A sessions, and exciting swags for all participants!",
+      date: "December 30, 2024",
       tag: "COMPETITION",
-      image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+      coordinators: "Harsh Gautam, Ayushi Katroliya",
+      location: "AB 1",
+      image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
     },
     {
-      title: "Tech Connect: Industry Meetup",
-      description: "Connect with professionals from top tech companies",
-      date: "May 10, 2025",
-      tag: "NETWORKING",
-      image: "https://images.unsplash.com/photo-1591267990532-e5bdb1b0ceb8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+      title: "Hands on Workshop on GEN AI+IoT",
+      description: "A hands-on workshop exploring Generative AI and Internet of Things with Master Trainer Dr. Ram Manohar Nisarg",
+      date: "December 31, 2024",
+      tag: "WORKSHOP",
+      coordinators: "Dr. Ram Manohar Nisarg",
+      location: "IoT Lab CSEDA",
+      image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      title: "Project X",
+      description: "Hands-on face recognition project",
+      date: "January 5, 2025",
+      tag: "WORKSHOP",
+      coordinators: "Rohit Pahwa (Technical business development member ducat)",
+      location: "AB 1",
+      image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      title: "IT Mela",
+      description: "Gaming and quiz event featuring Dart it, Quizzie Buzzie, and Grab the Word games with exciting prizes",
+      date: "March 18, 2023 (Past event)",
+      tag: "COMPETITION",
+      coordinators: "Whole Datum Team",
+      location: "Auditorium",
+      image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
     }
   ],
   

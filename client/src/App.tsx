@@ -6,11 +6,13 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Events from "./pages/Events";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/events" component={Events} />
       <Route component={NotFound} />
     </Switch>
   );

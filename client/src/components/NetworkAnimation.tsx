@@ -3,125 +3,225 @@ import { motion } from "framer-motion";
 
 interface NetworkAnimationProps {
   className?: string;
+  particleCount?: number;
+  connectionDistance?: number;
+  mouseEffect?: boolean;
+  mouseRadius?: number;
+  mouseStrength?: number;
 }
 
-export default function NetworkAnimation({ className = "" }: NetworkAnimationProps) {
+export default function NetworkAnimation({
+  className = "",
+  particleCount = 80,
+  connectionDistance = 160,
+  mouseEffect = true,
+  mouseRadius = 150,
+  mouseStrength = 5,
+}: NetworkAnimationProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  
+  const animationRef = useRef<number>();
+  const mousePositionRef = useRef({ x: 0, y: 0 });
+  const hasMouseMoved = useRef(false);
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    
+
+    // Track mouse position
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mousePositionRef.current = {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      };
+      hasMouseMoved.current = true;
+    };
+
+    // For touch devices
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const rect = canvas.getBoundingClientRect();
+        mousePositionRef.current = {
+          x: e.touches[0].clientX - rect.left,
+          y: e.touches[0].clientY - rect.top,
+        };
+        hasMouseMoved.current = true;
+      }
+    };
+
+    if (mouseEffect) {
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("touchmove", handleTouchMove);
+    }
+
+    // Set initial mouse position to center
+    mousePositionRef.current = {
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+    };
+
+    // Particles array
+    const particles: Particle[] = [];
     // Set canvas size to match parent
     const resize = () => {
       const parent = canvas.parentElement;
       if (!parent) return;
-      
-      canvas.width = parent.offsetWidth;
-      canvas.height = parent.offsetHeight;
+
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = parent.offsetWidth * dpr;
+      canvas.height = parent.offsetHeight * dpr;
+      canvas.style.width = `${parent.offsetWidth}px`;
+      canvas.style.height = `${parent.offsetHeight}px`;
+      ctx.scale(dpr, dpr); // Scale for retina displays
+
+      // Reset particles when resizing
+      if (particles.length > 0) {
+        init();
+      }
     };
-    
     resize();
     window.addEventListener("resize", resize);
-    
-    // Particles settings
-    const particlesArray: Particle[] = [];
-    const numberOfParticles = 50;
-    const maxDistance = 150;
-    
+
     class Particle {
       x: number;
       y: number;
+      originalX: number;
+      originalY: number;
       size: number;
       speedX: number;
       speedY: number;
-      
+      color: string;
+
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.originalX = this.x;
+        this.originalY = this.y;
+        this.size = Math.random() * 3 + 2; // Changed from 2+1 to 3+2 for bigger particles
+        this.speedX = (Math.random() - 0.5) * 1.5;
+        this.speedY = (Math.random() - 0.5) * 1.5;
+
+        // Blue color with varying opacity for better visibility
+        const opacity = Math.random() * 0.5 + 0.3;
+        this.color = `rgba(30, 144, 255, ${opacity})`;
       }
-      
+
       update() {
-        // Update position
+        // Natural movement
         this.x += this.speedX;
         this.y += this.speedY;
-        
+
         // Bounce off walls
         if (this.x > canvas.width || this.x < 0) {
           this.speedX = -this.speedX;
         }
-        
+
         if (this.y > canvas.height || this.y < 0) {
           this.speedY = -this.speedY;
         }
+
+        // Mouse effect
+        if (mouseEffect && hasMouseMoved.current) {
+          const dx = mousePositionRef.current.x - this.x;
+          const dy = mousePositionRef.current.y - this.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < mouseRadius) {
+            // Calculate force - stronger when closer
+            const force = (mouseRadius - distance) / mouseRadius;
+
+            // Push particles away from mouse
+            const directionX = dx / distance || 0; // Avoid division by zero
+            const directionY = dy / distance || 0;
+
+            // Apply force - use mouseStrength to control intensity
+            this.x -= directionX * force * mouseStrength;
+            this.y -= directionY * force * mouseStrength;
+          }
+        }
       }
-      
+
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(30, 144, 255, 0.4)";
+        ctx.fillStyle = this.color;
         ctx.fill();
       }
     }
-    
-    // Create particles
+
+    // Initialize particles
     const init = () => {
-      for (let i = 0; i < numberOfParticles; i++) {
-        particlesArray.push(new Particle());
+      particles.length = 0; // Clear existing particles
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
       }
     };
-    
+
     // Connect particles with lines
     const connect = () => {
-      for (let a = 0; a < particlesArray.length; a++) {
-        for (let b = a; b < particlesArray.length; b++) {
-          const dx = particlesArray[a].x - particlesArray[b].x;
-          const dy = particlesArray[a].y - particlesArray[b].y;
+      for (let a = 0; a < particles.length; a++) {
+        for (let b = a; b < particles.length; b++) {
+          const dx = particles[a].x - particles[b].x;
+          const dy = particles[a].y - particles[b].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          
-          if (distance < maxDistance) {
+
+          if (distance < connectionDistance) {
             // Opacity based on distance
-            const opacity = 1 - distance / maxDistance;
-            ctx.strokeStyle = `rgba(0, 102, 204, ${opacity * 0.5})`;
-            ctx.lineWidth = 1;
+            const opacity = 1 - distance / connectionDistance;
+            ctx.strokeStyle = `rgba(30, 144, 255, ${opacity * 0.5})`;
+            ctx.lineWidth = Math.max(0.5, opacity);
+
             ctx.beginPath();
-            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+            ctx.moveTo(particles[a].x, particles[a].y);
+            ctx.lineTo(particles[b].x, particles[b].y);
             ctx.stroke();
           }
         }
       }
     };
-    
+
     // Animation loop
     const animate = () => {
-      requestAnimationFrame(animate);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
-        particlesArray[i].draw();
+
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
       }
-      
+
       connect();
+      animationRef.current = requestAnimationFrame(animate);
     };
-    
+
+    // Start animation
     init();
     animate();
-    
+
+    // Cleanup function
     return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
       window.removeEventListener("resize", resize);
+
+      if (mouseEffect) {
+        window.removeEventListener("mousemove", handleMouseMove);
+        window.removeEventListener("touchmove", handleTouchMove);
+      }
     };
-  }, []);
-  
+  }, [
+    particleCount,
+    connectionDistance,
+    mouseEffect,
+    mouseRadius,
+    mouseStrength,
+  ]);
+
   return (
-    <motion.div 
+    <motion.div
       className={`absolute inset-0 ${className}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
