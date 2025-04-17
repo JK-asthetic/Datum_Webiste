@@ -6,6 +6,23 @@ import ScrollReveal from "@/components/ScrollReveal";
 import SocialIcons from "@/components/SocialIcons";
 import img1 from "../../../attached_assets/teamphoto/head_photo/Harsh.jpg";
 import img2 from "../../../attached_assets/teamphoto/head_photo/Ayushi.jpg";
+import img3 from "../../../attached_assets/teamphoto/head_photo/Bhumika.jpg";
+import img4 from "../../../attached_assets/teamphoto/tech_team/AMAN PANDEY.jpg";
+import img5 from "../../../attached_assets/teamphoto/tech_team/ANSHIKA GUPTA.jpg";
+import img6 from "../../../attached_assets/teamphoto/tech_team/NAMAN GUPTA.jpg";
+import img7 from "../../../attached_assets/teamphoto/tech_team/NIKHIL AGRAWAL.jpg";
+import img8 from "../../../attached_assets/teamphoto/tech_team/PALAK.jpg";
+import img9 from "../../../attached_assets/teamphoto/tech_team/RISHABH TRIPATHI.jpg";
+import img10 from "../../../attached_assets/teamphoto/tech_team/OM LAKSHKAR.jpg";
+import img11 from "../../../attached_assets/teamphoto/tech_team/ABHISHEK YADAV.jpg";
+import img12 from "../../../attached_assets/teamphoto/tech_team/AKSHAT GOYAL.jpg";
+import img13 from "../../../attached_assets/teamphoto/tech_team/JATIN KHETAN.jpg";
+import img14 from "../../../attached_assets/teamphoto/tech_team/KAVYA UPADHYAY.jpg";
+import img15 from "../../../attached_assets/teamphoto/tech_team/MISTHI BANSAL.jpg";
+import img16 from "../../../attached_assets/teamphoto/tech_team/PARTH GARG.jpg";
+
+
+
 export default function FullTeam() {
   const [activeTab, setActiveTab] = useState("all");
 
@@ -26,7 +43,7 @@ export default function FullTeam() {
     generalSecretary: {
       name: "Bhumika Yadav",
       year: "3rd Year",
-      image: "attached_assets/teamphoto/head_photo/Bhumika Yadav.jpg",
+      image: img3,
       role: "General Secretary",
     },
     pr: {
@@ -95,70 +112,70 @@ export default function FullTeam() {
       head: {
         name: "Aman Pandey",
         year: "3rd Year",
-        image: "/attached_assets/teamphoto/tech_team/AMAN PANDEY.jpg",
+        image: img4,
         role: "Tech Team Head",
       },
       cohead: {
         name: "Anshika Gupta",
         year: "3rd Year",
-        image: "/attached_assets/teamphoto/tech_team/ANSHIKA GUPTA.JPG",
+        image: img5,
         role: "Tech Team CO-Head",
       },
       members: [
         {
           name: "Naman Gupta",
           year: "3rd Year",
-          image: "/attached_assets/teamphoto/tech_team/Naman Gupta.JPG",
+          image: img6,
         },
         {
           name: "Nikhil Agrawal",
           year: "3rd Year",
-          image: "/attached_assets/teamphoto/tech_team/Nikhil Agrawal.jpg",
+          image: img7,
         },
         {
           name: "Palak",
           year: "3rd Year",
-          image: "/attached_assets/teamphoto/tech_team/Palak.JPG",
+          image: img8,
         },
         {
           name: "Rishabh Tripathi",
           year: "3rd Year",
-          image: "/attached_assets/teamphoto/tech_team/RISHABH TRIPATHI.jpg",
+          image: img9,
         },
         {
           name: "Om Lakshkar",
           year: "2nd Year",
-          image: "/attached_assets/teamphoto/tech_team/OM LAKSHKAR.JPG",
+          image: img10,
         },
         {
           name: "Abhishek Yadav",
           year: "2nd Year",
-          image: "/attached_assets/teamphoto/tech_team/Abhishek Yadav.jpg",
+          image: img11,
         },
         {
           name: "Akshat Goyal",
           year: "2nd Year",
-          image: "/attached_assets/teamphoto/tech_team/Akshat-Akshat Goel.jpg",
+          image: img12,
         },
         {
           name: "Jatin Khetan",
           year: "2nd Year",
-          image: "/attached_assets/teamphoto/tech_team/Jatin Khetan.jpg",
+          image: img13,
         },
         {
           name: "Kavya Upadhyay",
           year: "2nd Year",
-          image: "/attached_assets/teamphoto/tech_team/Kavya Upadhyay.jpg",
+          image: img14,
         },
         {
           name: "Misthi Bansal",
           year: "2nd Year",
-          image: "/attached_assets/teamphoto/tech_team/Misthi Bansal.jpg",
+          image: img15,
         },
         {
           name: "Parth Garg",
           year: "2nd Year",
-          image: "/attached_assets/teamphoto/tech_team/Parth Garg.JPG",
+          image: img16,
         },
       ],
     },
