@@ -11,6 +11,24 @@ export default function FullTeam() {
 
   // Sample team data - replace with your actual data
   const teamData = {
+    president: {
+      name: "Harsh Gautam",
+      year: "3rd Year",
+      image: "/attached_assets/teamphoto/head_photo/Harsh.JPG",
+      role: "President",
+    },
+    vicePresident: {
+      name: "Ayushi Katroliya",
+      year: "3rd Year",
+      image: "attached_assets/teamphoto/head_photo/Ayushi.JPG",
+      role: "Vice President",
+    },
+    generalSecretary: {
+      name: "Bhumika Yadav",
+      year: "3rd Year",
+      image: "attached_assets/teamphoto/head_photo/Bhumika Yadav.jpg",
+      role: "General Secretary",
+    },
     pr: {
       head: {
         name: "Jane Smith",
@@ -31,7 +49,7 @@ export default function FullTeam() {
     },
     design: {
       head: {
-        name: "Chris Lee",
+        name: "Saloni Bansal",
         year: "4th Year",
         image: "/team/design-head.jpg",
         role: "Design Team Head",
@@ -49,8 +67,8 @@ export default function FullTeam() {
     },
     events: {
       head: {
-        name: "Sam Wilson",
-        year: "4th Year",
+        name: "Aryan Sharma",
+        year: "3rd Year",
         image: "/team/events-head.jpg",
         role: "Events & Management Head",
       },
@@ -75,23 +93,65 @@ export default function FullTeam() {
     },
     tech: {
       head: {
-        name: "Charlie Davis",
-        year: "4th Year",
-        image: "/team/tech-head.jpg",
+        name: "Aman Pandey",
+        year: "3rd Year",
+        image: "/attached_assets/teamphoto/tech_team/AMAN PANDEY.jpg",
         role: "Tech Team Head",
       },
+      cohead: {
+        name: "Anshika Gupta",
+        year: "3rd Year",
+        image: "/attached_assets/teamphoto/tech_team/ANSHIKA GUPTA.JPG",
+        role: "Tech Team CO-Head",
+      },
       members: [
-        { name: "Robin Zhang", year: "3rd Year", image: "/team/member13.jpg" },
+        { name: "Naman Gupta", year: "3rd Year", image: "/attached_assets/teamphoto/tech_team/Naman Gupta.JPG" },
         {
-          name: "Elliot Sharma",
+          name: "Nikhil Agrawal",
           year: "3rd Year",
-          image: "/team/member14.jpg",
+          image: "/attached_assets/teamphoto/tech_team/Nikhil Agrawal.jpg",
         },
-        { name: "Harper Gupta", year: "2nd Year", image: "/team/member15.jpg" },
         {
-          name: "Cameron Wright",
+          name: "Palak",
+          year: "3rd Year",
+          image: "/attached_assets/teamphoto/tech_team/Palak.JPG",
+        },
+        
+        { name: "Rishabh Tripathi", year: "3rd Year", image: "/attached_assets/teamphoto/tech_team/RISHABH TRIPATHI.jpg" },
+        {
+          name: "Om Lakshkar",
           year: "2nd Year",
-          image: "/team/member16.jpg",
+          image: "/attached_assets/teamphoto/tech_team/OM LAKSHKAR.JPG",
+        },
+        {
+          name: "Abhishek Yadav",
+          year: "2nd Year",
+          image: "/attached_assets/teamphoto/tech_team/Abhishek Yadav.jpg",
+        },
+        {
+          name: "Akshat Goyal",
+          year: "2nd Year",
+          image: "/attached_assets/teamphoto/tech_team/Akshat-Akshat Goel.jpg",
+        },
+        {
+          name: "Jatin Khetan",
+          year: "2nd Year",
+          image: "/attached_assets/teamphoto/tech_team/Jatin Khetan.jpg",
+        },
+        {
+          name: "Kavya Upadhyay",
+          year: "2nd Year",
+          image: "/attached_assets/teamphoto/tech_team/Kavya Upadhyay.jpg",
+        },
+        {
+          name: "Misthi Bansal",
+          year: "2nd Year",
+          image: "/attached_assets/teamphoto/tech_team/Misthi Bansal.jpg",
+        },
+        {
+          name: "Parth Garg",
+          year: "2nd Year",
+          image: "/attached_assets/teamphoto/tech_team/Parth Garg.JPG",
         },
       ],
     },
