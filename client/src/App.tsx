@@ -7,12 +7,14 @@ import Home from "@/pages/Home";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Events from "./pages/Events";
+import FullTeam from "./pages/Team";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/events" component={Events} />
+      <Route path="/team" component={FullTeam} />
       <Route component={NotFound} />
     </Switch>
   );
