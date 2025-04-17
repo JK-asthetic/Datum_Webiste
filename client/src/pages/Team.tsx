@@ -4,8 +4,8 @@ import GradientText from "@/components/GradientText";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
 import SocialIcons from "@/components/SocialIcons";
-import { ArrowLeft } from "lucide-react";
-
+import img1 from "../../../attached_assets/teamphoto/head_photo/Harsh.jpg";
+import img2 from "../../../attached_assets/teamphoto/head_photo/Ayushi.jpg";
 export default function FullTeam() {
   const [activeTab, setActiveTab] = useState("all");
 
@@ -14,13 +14,13 @@ export default function FullTeam() {
     president: {
       name: "Harsh Gautam",
       year: "3rd Year",
-      image: "/attached_assets/teamphoto/head_photo/Harsh.JPG",
+      image: img1,
       role: "President",
     },
     vicePresident: {
       name: "Ayushi Katroliya",
       year: "3rd Year",
-      image: "attached_assets/teamphoto/head_photo/Ayushi.JPG",
+      image: img2,
       role: "Vice President",
     },
     generalSecretary: {
@@ -105,7 +105,11 @@ export default function FullTeam() {
         role: "Tech Team CO-Head",
       },
       members: [
-        { name: "Naman Gupta", year: "3rd Year", image: "/attached_assets/teamphoto/tech_team/Naman Gupta.JPG" },
+        {
+          name: "Naman Gupta",
+          year: "3rd Year",
+          image: "/attached_assets/teamphoto/tech_team/Naman Gupta.JPG",
+        },
         {
           name: "Nikhil Agrawal",
           year: "3rd Year",
@@ -116,8 +120,11 @@ export default function FullTeam() {
           year: "3rd Year",
           image: "/attached_assets/teamphoto/tech_team/Palak.JPG",
         },
-        
-        { name: "Rishabh Tripathi", year: "3rd Year", image: "/attached_assets/teamphoto/tech_team/RISHABH TRIPATHI.jpg" },
+        {
+          name: "Rishabh Tripathi",
+          year: "3rd Year",
+          image: "/attached_assets/teamphoto/tech_team/RISHABH TRIPATHI.jpg",
+        },
         {
           name: "Om Lakshkar",
           year: "2nd Year",
@@ -303,7 +310,13 @@ export default function FullTeam() {
             >
               <motion.div variants={itemVariants}>
                 <h2 className="text-3xl font-bold mb-8 border-l-4 border-accent pl-4">
-                  {teamSection.department === "pr"
+                  {teamSection.department === "president"
+                    ? "President"
+                    : teamSection.department === "vicePresident"
+                    ? "Vice President"
+                    : teamSection.department === "generalSecretary"
+                    ? "General Secretary"
+                    : teamSection.department === "pr"
                     ? "PR Team"
                     : teamSection.department === "design"
                     ? "Design Team"
@@ -312,74 +325,56 @@ export default function FullTeam() {
                     : "Tech Team"}
                 </h2>
 
-                {/* Department Head */}
-                <div className="mb-12">
-                  <h3 className="text-xl font-medium mb-6 text-accent">
-                    Team Head
-                  </h3>
-                  <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700/50 backdrop-blur-sm">
-                    <div className="flex flex-col md:flex-row items-center">
-                      <div className="w-48 h-48 rounded-full overflow-hidden mb-6 md:mb-0 md:mr-8">
-                        <motion.img
-                          src={teamSection.head.image}
-                          alt={teamSection.head.name}
-                          className="w-full h-full object-cover"
-                          whileHover={{ scale: 1.1 }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 200,
-                            damping: 20,
-                          }}
-                        />
-                      </div>
-                      <div>
-                        <h4 className="text-2xl font-bold">
-                          {teamSection.head.name}
-                        </h4>
-                        <p className="text-accent mb-2">
-                          {teamSection.head.role}
-                        </p>
-                        <p className="text-gray-400 mb-4">
-                          {teamSection.head.year}
-                        </p>
-                        <div className="mt-4">
-                          <SocialIcons iconSize={20} />
+                {/* Check if its a leadership position or team section */}
+                {["president", "vicePresident", "generalSecretary"].includes(
+                  teamSection.department
+                ) ? (
+                  // Leadership position (single person display)
+                  <div className="mb-12">
+                    <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700/50 backdrop-blur-sm">
+                      <div className="flex flex-col md:flex-row items-center">
+                        <div className="w-48 h-48 rounded-full overflow-hidden mb-6 md:mb-0 md:mr-8">
+                          <motion.img
+                            src={teamSection.image}
+                            alt={teamSection.name}
+                            className="w-full h-full object-cover"
+                            whileHover={{ scale: 1.1 }}
+                            transition={{
+                              type: "spring",
+                              stiffness: 200,
+                              damping: 20,
+                            }}
+                          />
+                        </div>
+                        <div>
+                          <h4 className="text-2xl font-bold">
+                            {teamSection.name}
+                          </h4>
+                          <p className="text-accent mb-2">{teamSection.role}</p>
+                          <p className="text-gray-400 mb-4">
+                            {teamSection.year}
+                          </p>
+                          <div className="mt-4">
+                            <SocialIcons iconSize={20} />
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-
-                {/* Department Members */}
-                <div>
-                  <h3 className="text-xl font-medium mb-6 text-accent">
-                    Team Members
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {teamSection.members.map((member, index) => (
-                      <ScrollReveal
-                        key={index}
-                        effect="spring"
-                        duration={0.8}
-                        delay={index * 0.1}
-                      >
-                        <motion.div
-                          className="bg-gray-800/40 rounded-xl overflow-hidden border border-gray-700/50 backdrop-blur-sm"
-                          whileHover={{
-                            y: -10,
-                            boxShadow:
-                              "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                            transition: {
-                              type: "spring",
-                              stiffness: 200,
-                              damping: 12,
-                            },
-                          }}
-                        >
-                          <div className="h-56 overflow-hidden">
+                ) : (
+                  // Team section with head and members
+                  <>
+                    {/* Department Head */}
+                    <div className="mb-12">
+                      <h3 className="text-xl font-medium mb-6 text-accent">
+                        Team Head
+                      </h3>
+                      <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700/50 backdrop-blur-sm">
+                        <div className="flex flex-col md:flex-row items-center">
+                          <div className="w-48 h-48 rounded-full overflow-hidden mb-6 md:mb-0 md:mr-8">
                             <motion.img
-                              src={member.image}
-                              alt={member.name}
+                              src={teamSection.head.image}
+                              alt={teamSection.head.name}
                               className="w-full h-full object-cover"
                               whileHover={{ scale: 1.1 }}
                               transition={{
@@ -389,20 +384,121 @@ export default function FullTeam() {
                               }}
                             />
                           </div>
-                          <div className="p-6 text-center">
-                            <h4 className="text-xl font-bold mb-1">
-                              {member.name}
+                          <div>
+                            <h4 className="text-2xl font-bold">
+                              {teamSection.head.name}
                             </h4>
-                            <p className="text-gray-400">{member.year}</p>
+                            <p className="text-accent mb-2">
+                              {teamSection.head.role}
+                            </p>
+                            <p className="text-gray-400 mb-4">
+                              {teamSection.head.year}
+                            </p>
                             <div className="mt-4">
-                              <SocialIcons iconSize={16} />
+                              <SocialIcons iconSize={20} />
                             </div>
                           </div>
-                        </motion.div>
-                      </ScrollReveal>
-                    ))}
-                  </div>
-                </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Display Co-Head if present (only in Tech team) */}
+                    {teamSection.cohead && (
+                      <div className="mb-12">
+                        <h3 className="text-xl font-medium mb-6 text-accent">
+                          Team Co-Head
+                        </h3>
+                        <div className="bg-gray-800/30 p-6 rounded-xl border border-gray-700/50 backdrop-blur-sm">
+                          <div className="flex flex-col md:flex-row items-center">
+                            <div className="w-48 h-48 rounded-full overflow-hidden mb-6 md:mb-0 md:mr-8">
+                              <motion.img
+                                src={teamSection.cohead.image}
+                                alt={teamSection.cohead.name}
+                                className="w-full h-full object-cover"
+                                whileHover={{ scale: 1.1 }}
+                                transition={{
+                                  type: "spring",
+                                  stiffness: 200,
+                                  damping: 20,
+                                }}
+                              />
+                            </div>
+                            <div>
+                              <h4 className="text-2xl font-bold">
+                                {teamSection.cohead.name}
+                              </h4>
+                              <p className="text-accent mb-2">
+                                {teamSection.cohead.role}
+                              </p>
+                              <p className="text-gray-400 mb-4">
+                                {teamSection.cohead.year}
+                              </p>
+                              <div className="mt-4">
+                                <SocialIcons iconSize={20} />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Department Members */}
+                    {teamSection.members && teamSection.members.length > 0 && (
+                      <div>
+                        <h3 className="text-xl font-medium mb-6 text-accent">
+                          Team Members
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                          {teamSection.members.map((member, index) => (
+                            <ScrollReveal
+                              key={index}
+                              effect="spring"
+                              duration={0.8}
+                              delay={index * 0.1}
+                            >
+                              <motion.div
+                                className="bg-gray-800/40 rounded-xl overflow-hidden border border-gray-700/50 backdrop-blur-sm"
+                                whileHover={{
+                                  y: -10,
+                                  boxShadow:
+                                    "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                                  transition: {
+                                    type: "spring",
+                                    stiffness: 200,
+                                    damping: 12,
+                                  },
+                                }}
+                              >
+                                <div className="h-56 overflow-hidden">
+                                  <motion.img
+                                    src={member.image}
+                                    alt={member.name}
+                                    className="w-full h-full object-cover"
+                                    whileHover={{ scale: 1.1 }}
+                                    transition={{
+                                      type: "spring",
+                                      stiffness: 200,
+                                      damping: 20,
+                                    }}
+                                  />
+                                </div>
+                                <div className="p-6 text-center">
+                                  <h4 className="text-xl font-bold mb-1">
+                                    {member.name}
+                                  </h4>
+                                  <p className="text-gray-400">{member.year}</p>
+                                  <div className="mt-4">
+                                    <SocialIcons iconSize={16} />
+                                  </div>
+                                </div>
+                              </motion.div>
+                            </ScrollReveal>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </>
+                )}
               </motion.div>
             </ScrollReveal>
           ))}
