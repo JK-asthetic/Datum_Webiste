@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import SocialIcons from "@/components/SocialIcons";
 import img1 from "../../../attached_assets/teamphoto/head_photo/Harsh.jpg";
 import img2 from "../../../attached_assets/teamphoto/head_photo/Ayushi.jpg";
-import img3 from "../../../attached_assets/teamphoto/head_photo/Bhumika.jpg";
+import img3 from "../../../attached_assets/teamphoto/head_photo/Bhumika Yadav.jpg";
 import img4 from "../../../attached_assets/teamphoto/tech_team/AMAN PANDEY.jpg";
 import img5 from "../../../attached_assets/teamphoto/tech_team/ANSHIKA GUPTA.jpg";
 import img6 from "../../../attached_assets/teamphoto/tech_team/NAMAN GUPTA.jpg";
@@ -15,13 +15,11 @@ import img8 from "../../../attached_assets/teamphoto/tech_team/PALAK.jpg";
 import img9 from "../../../attached_assets/teamphoto/tech_team/RISHABH TRIPATHI.jpg";
 import img10 from "../../../attached_assets/teamphoto/tech_team/OM LAKSHKAR.jpg";
 import img11 from "../../../attached_assets/teamphoto/tech_team/ABHISHEK YADAV.jpg";
-import img12 from "../../../attached_assets/teamphoto/tech_team/AKSHAT GOYAL.jpg";
+import img12 from "../../../attached_assets/teamphoto/tech_team/Akshat Goel.jpg";
 import img13 from "../../../attached_assets/teamphoto/tech_team/JATIN KHETAN.jpg";
 import img14 from "../../../attached_assets/teamphoto/tech_team/KAVYA UPADHYAY.jpg";
 import img15 from "../../../attached_assets/teamphoto/tech_team/MISTHI BANSAL.jpg";
 import img16 from "../../../attached_assets/teamphoto/tech_team/PARTH GARG.jpg";
-
-
 
 export default function FullTeam() {
   const [activeTab, setActiveTab] = useState("all");
@@ -62,50 +60,6 @@ export default function FullTeam() {
         },
         { name: "Morgan Brown", year: "3rd Year", image: "/team/member3.jpg" },
         { name: "Casey Garcia", year: "2nd Year", image: "/team/member4.jpg" },
-      ],
-    },
-    design: {
-      head: {
-        name: "Saloni Bansal",
-        year: "4th Year",
-        image: "/team/design-head.jpg",
-        role: "Design Team Head",
-      },
-      members: [
-        { name: "Jordan Patel", year: "3rd Year", image: "/team/member5.jpg" },
-        { name: "Riley Kim", year: "2nd Year", image: "/team/member6.jpg" },
-        { name: "Quinn Chen", year: "3rd Year", image: "/team/member7.jpg" },
-        {
-          name: "Avery Rodriguez",
-          year: "2nd Year",
-          image: "/team/member8.jpg",
-        },
-      ],
-    },
-    events: {
-      head: {
-        name: "Aryan Sharma",
-        year: "3rd Year",
-        image: "/team/events-head.jpg",
-        role: "Events & Management Head",
-      },
-      members: [
-        {
-          name: "Dakota Martinez",
-          year: "3rd Year",
-          image: "/team/member9.jpg",
-        },
-        {
-          name: "Parker Nguyen",
-          year: "2nd Year",
-          image: "/team/member10.jpg",
-        },
-        {
-          name: "Skyler Thompson",
-          year: "3rd Year",
-          image: "/team/member11.jpg",
-        },
-        { name: "Jamie Walker", year: "2nd Year", image: "/team/member12.jpg" },
       ],
     },
     tech: {
@@ -177,6 +131,50 @@ export default function FullTeam() {
           year: "2nd Year",
           image: img16,
         },
+      ],
+    },
+    design: {
+      head: {
+        name: "Saloni Bansal",
+        year: "4th Year",
+        image: "/team/design-head.jpg",
+        role: "Design Team Head",
+      },
+      members: [
+        { name: "Jordan Patel", year: "3rd Year", image: "/team/member5.jpg" },
+        { name: "Riley Kim", year: "2nd Year", image: "/team/member6.jpg" },
+        { name: "Quinn Chen", year: "3rd Year", image: "/team/member7.jpg" },
+        {
+          name: "Avery Rodriguez",
+          year: "2nd Year",
+          image: "/team/member8.jpg",
+        },
+      ],
+    },
+    events: {
+      head: {
+        name: "Aryan Sharma",
+        year: "3rd Year",
+        image: "/team/events-head.jpg",
+        role: "Events & Management Head",
+      },
+      members: [
+        {
+          name: "Dakota Martinez",
+          year: "3rd Year",
+          image: "/team/member9.jpg",
+        },
+        {
+          name: "Parker Nguyen",
+          year: "2nd Year",
+          image: "/team/member10.jpg",
+        },
+        {
+          name: "Skyler Thompson",
+          year: "3rd Year",
+          image: "/team/member11.jpg",
+        },
+        { name: "Jamie Walker", year: "2nd Year", image: "/team/member12.jpg" },
       ],
     },
   };
